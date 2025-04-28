@@ -22,6 +22,32 @@ function displayTransactionHistory() {
     });
 }
 
+// Function to handle form submission
+function handleFormSubmit(event) {
+    event.preventDefault();
+
+    const type = document.getElementById('type').value;
+    const amount = parseFloat(document.getElementById('amount').value);
+    const category = document.getElementById('category').value;
+
+    if (!amount || !category) {
+        alert('Please fill out all fields.');
+        return;
+    }
+
+    const transactions = JSON.parse(localStorage.getItem('transactions')) || [];
+    transactions.push({ type, amount, category });
+    localStorage.setItem('transactions', JSON.stringify(transactions));
+
+    updateBudgetOverview();
+    displayTransactionHistory();
+
+    document.getElementById('transaction-form').reset();
+}
+
+// Add event listener to the form
+document.getElementById('transaction-form').addEventListener('submit', handleFormSubmit);
+
 // Call functions on page load
 if (document.getElementById('total-income')) {
     updateBudgetOverview();
