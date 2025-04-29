@@ -162,3 +162,35 @@ form button:hover {
         align-self: flex-end;
     }
 }
+#Register-here {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 28px;
+    color: green;
+    font-weight: bold;
+    border: #45a049 2px solid;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: black;
+    width: 200px;
+    margin: 0 auto;
+    cursor: pointer;  
+    transition: background-color 0.3s ease;
+
+}
+#login-here {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 28px;
+    color: green;
+    font-weight: bold;
+    border: #45a049 2px solid;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: black;
+    width: 200px;
+    margin: 0 auto;
+    cursor: pointer;  
+    transition: background-color 0.3s ease;
+
+}
