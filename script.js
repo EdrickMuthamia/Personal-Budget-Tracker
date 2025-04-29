@@ -4,9 +4,9 @@ function updateBudgetOverview() {
     const totalIncome = transactions.filter(t => t.type === 'income').reduce((acc, t) => acc + t.amount, 0);
     const totalExpenses = transactions.filter(t => t.type === 'expense').reduce((acc, t) => acc + t.amount, 0);
 
-    document.getElementById('total-income').innerText = `$${totalIncome}`;
-    document.getElementById('total-expenses').innerText = `$${totalExpenses}`;
-    document.getElementById('remaining-budget').innerText = `$${totalIncome - totalExpenses}`;
+    document.getElementById('total-income').innerText = `Ksh${totalIncome}`;
+    document.getElementById('total-expenses').innerText = `Ksh${totalExpenses}`;
+    document.getElementById('remaining-budget').innerText = `Ksh${totalIncome - totalExpenses}`;
 }
 
 // Function to display transaction history
@@ -17,7 +17,7 @@ function displayTransactionHistory() {
 
     transactions.forEach((transaction, index) => {
         const li = document.createElement('li');
-        li.innerText = `${transaction.type === 'income' ? 'Income' : 'Expense'}: $${transaction.amount} - ${transaction.category}`;
+        li.innerText = `${transaction.type === 'income' ? 'Income' : 'Expense'}: Ksh${transaction.amount} - ${transaction.category}`;
         transactionList.appendChild(li);
     });
 }
