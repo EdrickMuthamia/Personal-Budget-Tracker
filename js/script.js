@@ -1,3 +1,18 @@
+// Redirect to login page if not logged in
+if (localStorage.getItem('isLoggedIn') !== 'true') {
+    alert('You must log in to access this page.');
+    window.location.href = 'login.html';
+}
+
+// Display the logged-in user's username
+const loggedInUser = localStorage.getItem('loggedInUser');
+if (loggedInUser) {
+    const welcomeMessage = document.createElement('h2');
+    welcomeMessage.id = 'welcome-message';
+    welcomeMessage.innerText = `Welcome, ${loggedInUser}!`;
+    document.body.insertBefore(welcomeMessage, document.body.firstChild);
+}
+
 // Function to update budget overview
 function updateBudgetOverview() {
     const transactions = JSON.parse(localStorage.getItem('transactions')) || [];
@@ -18,6 +33,19 @@ function displayTransactionHistory() {
     transactions.forEach((transaction, index) => {
         const li = document.createElement('li');
         li.innerText = `${transaction.type === 'income' ? 'Income' : 'Expense'}: Ksh${transaction.amount} - ${transaction.category}`;
+
+        // Add delete button
+        const deleteButton = document.createElement('button');
+        deleteButton.innerText = 'Delete';
+        deleteButton.style.marginLeft = '10px';
+        deleteButton.addEventListener('click', function () {
+            transactions.splice(index, 1); // Remove the transaction
+            localStorage.setItem('transactions', JSON.stringify(transactions));
+            updateBudgetOverview();
+            displayTransactionHistory();
+        });
+
+        li.appendChild(deleteButton);
         transactionList.appendChild(li);
     });
 }
@@ -45,14 +73,17 @@ function handleFormSubmit(event) {
     document.getElementById('transaction-form').reset();
 }
 
+// Handle logout
+document.getElementById('logout-button')?.addEventListener('click', function () {
+    localStorage.removeItem('isLoggedIn'); // Clear login status
+    localStorage.removeItem('loggedInUser'); // Clear logged-in user
+    alert('You have been logged out.');
+    window.location.href = 'login.html'; // Redirect to the login page
+});
+
 // Add event listener to the form
 document.getElementById('transaction-form').addEventListener('submit', handleFormSubmit);
 
 // Call functions on page load
-if (document.getElementById('total-income')) {
-    updateBudgetOverview();
-}
-
-if (document.getElementById('transaction-list')) {
-    displayTransactionHistory();
-}
+updateBudgetOverview();
+displayTransactionHistory();
