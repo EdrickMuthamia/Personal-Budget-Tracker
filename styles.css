@@ -181,3 +181,143 @@ form button:hover {
         align-self: flex-end;
     }
 }
+/* Hero Section */
+.hero {
+    text-align: center;
+    padding: 50px 20px;
+    background: linear-gradient(to bottom right, #4CAF50, #45a049);
+    color: white;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+.hero h2 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+.hero p {
+    font-size: 1.2rem;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+ul li {
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+ul li i {
+    color: #4CAF50;
+    margin-right: 10px;
+}
+
+.cta {
+    text-align: center;
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+}
+.cta-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+.cta-button:hover {
+    background-color: #45a049;
+}
+/* Contact Page Specific Styles */
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    padding: 50px 20px;
+    background: linear-gradient(to bottom right, #4CAF50, #45a049);
+    color: white;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+.hero h2 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+.hero p {
+    font-size: 1.2rem;
+}
+
+/* Contact Information Section */
+main ul {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+}
+main ul li {
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+    color: #333;
+}
+main ul li strong {
+    color: #4CAF50;
+}
+main ul li a {
+    color: #214A22;
+    text-decoration: none;
+    font-weight: bold;
+}
+main ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Call-to-Action Section */
+.cta {
+    text-align: center;
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.cta h2 {
+    font-size: 1.8rem;
+    color: #4CAF50;
+    margin-bottom: 10px;
+}
+.cta p {
+    font-size: 1rem;
+    margin-bottom: 20px;
+    color: #666;
+}
+.cta-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+.cta-button:hover {
+    background-color: #45a049;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 15px 0;
+    background-color: #214A22;
+    color: white;
+    font-size: 0.9rem;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+}
+#welcome-message {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
