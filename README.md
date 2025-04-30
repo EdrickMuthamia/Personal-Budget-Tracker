@@ -87,7 +87,7 @@ This project is licensed under the MIT License. Feel free to use and modify it a
 
 ## Contact
 For any questions or feedback, feel free to reach out:
-- Email: edrickmuthamia.com
+- Email: edrickmuthamia05@gmail.com
 - Phone: 011745920
 - Address: 123 Budget Street, Finance City, 45678
 
