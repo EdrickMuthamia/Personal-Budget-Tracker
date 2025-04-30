@@ -1,3 +1,4 @@
+// Handle login form submission
 document.getElementById('login-form').addEventListener('submit', function(event) {
     event.preventDefault();
 
@@ -14,5 +15,15 @@ document.getElementById('login-form').addEventListener('submit', function(event)
         window.location.href = 'index.html';
     } else {
         document.getElementById('error-message').style.display = 'block';
+    }
+});
+
+// Toggle password visibility
+document.getElementById('toggle-password').addEventListener('change', function() {
+    const passwordField = document.getElementById('password');
+    if (this.checked) {
+        passwordField.type = 'text'; // Show password
+    } else {
+        passwordField.type = 'password'; // Hide password
     }
 });
