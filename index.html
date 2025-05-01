@@ -36,9 +36,18 @@
                 <input type="number" id="amount" required>
                 <label for="category">Category:</label>
                 <input type="text" id="category" required>
+                <label for="date">Date</label>
+                <input type="date" id="date" required>
                 <button type="submit">Add Transaction</button>
             </form>
         </section>
+        <section>
+            <label for="filter">Filter by:</label>
+            <select id="filter">
+                <option value="all">All</option>
+                <option value="income">Income</option>
+                <option value="expense">Expense</option>
+            </select>
         <section>
             <h2>Transaction History</h2>
             <ul id="transaction-list"></ul>
