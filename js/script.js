@@ -24,15 +24,21 @@ function updateBudgetOverview() {
     document.getElementById('remaining-budget').innerText = `Ksh${totalIncome - totalExpenses}`;
 }
 
-// Function to display transaction history
-function displayTransactionHistory() {
+// Function to display transaction history with optional filtering
+function displayTransactionHistory(filter = 'all') {
     const transactions = JSON.parse(localStorage.getItem('transactions')) || [];
     const transactionList = document.getElementById('transaction-list');
     transactionList.innerHTML = '';
 
-    transactions.forEach((transaction, index) => {
+    // Filter transactions based on the selected filter
+    const filteredTransactions = transactions.filter(transaction => {
+        if (filter === 'all') return true;
+        return transaction.type === filter;
+    });
+
+    filteredTransactions.forEach((transaction, index) => {
         const li = document.createElement('li');
-        li.innerText = `${transaction.type === 'income' ? 'Income' : 'Expense'}: Ksh${transaction.amount} - ${transaction.category}`;
+        li.innerText = `${transaction.type === 'income' ? 'Income' : 'Expense'}: Ksh${transaction.amount} - ${transaction.category} (${transaction.date})`;
 
         // Add delete button
         const deleteButton = document.createElement('button');
@@ -42,7 +48,7 @@ function displayTransactionHistory() {
             transactions.splice(index, 1); // Remove the transaction
             localStorage.setItem('transactions', JSON.stringify(transactions));
             updateBudgetOverview();
-            displayTransactionHistory();
+            displayTransactionHistory(filter);
         });
 
         li.appendChild(deleteButton);
@@ -57,14 +63,24 @@ function handleFormSubmit(event) {
     const type = document.getElementById('type').value;
     const amount = parseFloat(document.getElementById('amount').value);
     const category = document.getElementById('category').value;
+    const dateInput = document.getElementById('date').value;
 
-    if (!amount || !category) {
+    if (!amount || !category || !dateInput) {
         alert('Please fill out all fields.');
         return;
     }
 
+    // Format the date to include the day of the week
+    const dateObject = new Date(dateInput);
+    const formattedDate = dateObject.toLocaleDateString('en-US', {
+        weekday: 'long', // Full day name (e.g., Tuesday)
+        year: 'numeric',
+        month: 'long', // Full month name (e.g., May)
+        day: 'numeric',
+    });
+
     const transactions = JSON.parse(localStorage.getItem('transactions')) || [];
-    transactions.push({ type, amount, category });
+    transactions.push({ type, amount, category, date: formattedDate });
     localStorage.setItem('transactions', JSON.stringify(transactions));
 
     updateBudgetOverview();
@@ -83,6 +99,12 @@ document.getElementById('logout-button')?.addEventListener('click', function () 
 
 // Add event listener to the form
 document.getElementById('transaction-form').addEventListener('submit', handleFormSubmit);
+
+// Add event listener to the filter dropdown
+document.getElementById('filter').addEventListener('change', function () {
+    const filter = this.value;
+    displayTransactionHistory(filter);
+});
 
 // Call functions on page load
 updateBudgetOverview();
